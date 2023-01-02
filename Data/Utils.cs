@@ -44,7 +44,7 @@ public static class Utils
 
     public static string GetAppDirectoryPath()
     {
-        return @"D:\";
+        return @"D:\cwww\todo\JSONData";
 
     }
 
@@ -52,24 +52,19 @@ public static class Utils
     {
         return Path.Combine(GetAppDirectoryPath(), "users.json");
     }
-
-    public static string GetTodosFilePath(Guid userId)
-    {
-        return Path.Combine(GetAppDirectoryPath(), userId.ToString() + "_todos.json");
-    }
     public static string GetInventoryFilePath()
     {
-        return Path.Combine(("D:"),  "inventory.json");
+        return Path.Combine(("D:\\cwww\\todo\\JSONData"),  "inventory.json");
     }    
     
     public static string GetWithdrawlFilePath(Guid userId)
     {
-        return Path.Combine(("D:"), "withdrawl.json");
+        return Path.Combine(("D:\\cwww\\todo\\JSONData"), "withdrawl.json");
     }   
     
     public static string GetApprovedFilePath(Guid userId)
     {
-        return Path.Combine(("D:"), "approved.json");
+        return Path.Combine(("D:\\cwww\\todo\\JSONData"), "approved.json");
     }
 
 
