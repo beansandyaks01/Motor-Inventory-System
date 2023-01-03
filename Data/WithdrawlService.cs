@@ -44,7 +44,7 @@ namespace Todo.Data
         {
             if (quantity <= 0)
             {
-                throw new Exception("");
+                throw new Exception("Withdraw cannot be 0 or less");
             }
             else if (quantity <= 0)
             {

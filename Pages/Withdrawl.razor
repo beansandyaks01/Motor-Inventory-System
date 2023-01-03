@@ -99,14 +99,7 @@
     }
 
 
-    private void OpenApproveItemDialog(WithdrawlItem withdrawlItem)
-    {
 
-        _showApproveItemDialog = true;
-        _withdrawlModel = withdrawlItem;
-        Console.WriteLine("The dialog box should be shown here");
-
-    }
 
 
     private void OpenRejectItemDialog(WithdrawlItem withdrawlItem)
@@ -129,6 +122,14 @@
         }
     }
 
+    private void OpenApproveItemDialog(WithdrawlItem withdrawlItem)
+    {
+
+        _showApproveItemDialog = true;
+        _withdrawlModel = withdrawlItem;
+        Console.WriteLine("The dialog box should be shown here");
+
+    }
 
 
     private void OnApproveItemDialogClose(bool isCancel)

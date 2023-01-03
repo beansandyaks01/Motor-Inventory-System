@@ -43,24 +43,33 @@ namespace Todo.Data
 
         public static List<ApprovedItem> Create(Guid userId, string itemName, Guid itemid, int quantity, string takerName, Guid approverID, string approverName, bool isApproved)
         {
-            
+            DateTime currentTime = DateTime.Now;
+
             List<ApprovedItem> approvedItems = GetAll(userId);
-            approvedItems.Add(new ApprovedItem
+            if (currentTime.Hour >= 9 && currentTime.Hour < 16 && currentTime.DayOfWeek >= DayOfWeek.Monday && currentTime.DayOfWeek <= DayOfWeek.Friday)
             {
-                Quantity = quantity,
-                ItemId= itemid,
-                TakenBy = userId,
-                TakerName = takerName,
-                IsApproved = isApproved,
-                ItemName = itemName,
-                ApprovedBy = approverID,
-                ApproverName = approverName,
+                approvedItems.Add(new ApprovedItem
+                {
+                    Quantity = quantity,
+                    ItemId = itemid,
+                    TakenBy = userId,
+                    TakerName = takerName,
+                    IsApproved = isApproved,
+                    ItemName = itemName,
+                    ApprovedBy = approverID,
+                    ApproverName = approverName,
 
 
 
-            });
-            SaveAll(userId,approvedItems);
+                });
+                SaveAll(userId, approvedItems);
+            }
+            else
+            {
+                throw new Exception("The user cannot withdraw during this time.");
+            }
             return approvedItems;
+            
         }
 
 

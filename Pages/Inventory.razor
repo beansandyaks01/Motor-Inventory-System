@@ -2,9 +2,12 @@
 
 <nav class="navbar navbar-light bg-light justify-content-between">
     <h1 class="navbar-brand mb-0 h1">Inventory Items</h1>
-    <button class="btn btn-primary" type="button" @onclick="OpenAddItemDialog">
-        <span class="oi oi-plus" /> Add Itemns
-    </button>
+    @if (UserRole == Role.Admin)
+    {
+        <button class="btn btn-primary" type="button" @onclick="OpenAddItemDialog">
+            <span class="oi oi-plus" /> Add Itemns
+        </button>
+    }
 </nav>
 
 <table class="table">
@@ -24,12 +27,16 @@
                 <td>@inventoryItem.Quantity.ToString()</td>
                 <td>@inventoryItem.AddedBy</td>
 
-                <button class="btn btn-outline-secondary" type="button" @onclick="()=>OpenEditInventoryDialog(inventoryItem)">
-                    <span class="oi oi-delete" /> Edit
-                </button>
-                <button class="btn btn-outline-danger" type="button" @onclick="()=>OpenDeleteInventoryDialog(inventoryItem)">
-                    <span class="oi oi-delete" /> Delete
-                </button>
+                @if (UserRole == Role.Admin)
+                {
+                    <button class="btn btn-outline-secondary" type="button" @onclick="()=>OpenEditInventoryDialog(inventoryItem)">
+                        <span class="oi oi-delete" /> Edit
+                    </button>
+                    <button class="btn btn-outline-danger" type="button" @onclick="()=>OpenDeleteInventoryDialog(inventoryItem)">
+                        <span class="oi oi-delete" /> Delete
+                    </button>
+                }
+                
 
 
             </tr>
@@ -104,6 +111,7 @@
     private List<User> _users { get; set; }
     private string _itemName { get; set; }
     private int _quantity { get; set; }
+    public Role UserRole { get; set; }
 
 
     private bool _showEditTodoDialog { get; set; }

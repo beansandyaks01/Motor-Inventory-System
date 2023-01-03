@@ -42,7 +42,7 @@ namespace Todo.Data
                 throw new Exception("Cannot Add Item with 0 quantity");
 
             }
-            else if (itemName == null)
+            else if (string.IsNullOrEmpty(itemName))
             {
                 throw new Exception("Item Name cannot be empty");
 
@@ -86,12 +86,10 @@ namespace Todo.Data
             else if (quantity <= 0)
             {
                 throw new Exception("Cannot Add Item with 0 quantity");
-
             }
-            else if (itemName == null)
+            else if (string.IsNullOrEmpty(itemName))
             {
                 throw new Exception("Item Name cannot be empty");
-
             }
             else if (itemName.GetType() != typeof(string))
             {
