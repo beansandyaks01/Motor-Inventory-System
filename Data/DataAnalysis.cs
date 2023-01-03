@@ -12,7 +12,7 @@ namespace Todo.Data
         public static List<DataAnalysisDTO> DataAnalysisDTO(Guid userId)
         {
             List<DataAnalysisDTO> dataAnalysisDTO = new List<DataAnalysisDTO>();
-            var data = InventoryService.GetAll();
+            var data = ApprovedItemService.GetAll(userId);
             //var filterData = data.Where(x => x.Id == userId).ToList();
             foreach (var item in data)
             {

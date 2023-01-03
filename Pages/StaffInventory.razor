@@ -30,12 +30,12 @@
 {
     <ModalDialog Title="@_dialogTitle" OnClose="@OnStaffInventoryDialogClose" OkLabel="@_dialogOkLabel">
         <h1></h1>
-        <div class="form-group">
+        <div class="form-floating">
+            <input id="itemName" type="text" class="form-control" @bind="_inventoryModel.ItemName" placeholder="Item Name" />
             <label for="itemName">Item Name</label>
-            <select class="form-control" id="itemNameSelect" asp-for="ItemName"></select>
-        </div> asp.items="Todo.I"
-        <div class="form-group">
-            <input id="quantity" type="text" class="form-control"  @bind="_inventoryModel.Quantity"  placeholder="Quantity" />
+        </div>
+        <div class="form-floating">
+            <input id="quantity" type="text" class="form-control" @bind="_inventoryModel.Quantity" placeholder="Quantity" />
             <label for="quantity">Quantity</label>
         </div>
 
@@ -89,7 +89,10 @@
 
     private void OpenWithdrawlInventoryDialog(InventoryItems editInventory)
     {
-        
+        DateTime currentTime = DateTime.Now;
+
+
+
         _dialogTitle = "Withdraw Items";
         _dialogOkLabel = "Withdraw";
         _inventoryModel = editInventory;
@@ -106,7 +109,7 @@
         }
         else
         {
-           
+
             try
             {
                 _editTodoErrorMessage = "";
@@ -117,10 +120,10 @@
                 else
                 {
                     _inventoryItems = InventoryService.WithdrawItem(_globalState.CurrentUser.Id, _inventoryModel.Id, _inventoryModel.ItemName, _inventoryModel.Quantity);
-                    
+                    Console.WriteLine(_inventoryModel.ItemName);
                 }
-                _withdrawlItems = WithdrawlService.Create(_globalState.CurrentUser.Id, _inventoryModel.Id, _inventoryModel.ItemName,_inventoryModel.Quantity, _globalState.CurrentUser.Username);
-                
+                _withdrawlItems = WithdrawlService.Create(_globalState.CurrentUser.Id, _inventoryModel.Id, _inventoryModel.ItemName, _inventoryModel.Quantity, _globalState.CurrentUser.Username);
+                Console.WriteLine("Successfully Added to next Array");
                 _showWithdrawlInventoryDialog = false;
             }
             catch (Exception e)
