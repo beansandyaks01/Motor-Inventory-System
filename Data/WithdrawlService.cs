@@ -46,16 +46,13 @@ namespace Todo.Data
             {
                 throw new Exception("Withdraw cannot be 0 or less");
             }
-            else if (quantity <= 0)
-            {
-                throw new Exception("Withdraw cannot be 0 or less");
-
-            }
+            
             else
             {
                 List<WithdrawlItem> withdrawlItems = GetAll(userId);
                 withdrawlItems.Add(new WithdrawlItem
                 {
+                   
                     Quantity = quantity,
                     TakenBy = userId,
                     TakerName = takerName,
