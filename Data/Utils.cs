@@ -54,17 +54,17 @@ public static class Utils
     }
     public static string GetInventoryFilePath()
     {
-        return Path.Combine(("D:\\cwww\\todo\\JSONData"),  "inventory.json");
+        return Path.Combine(GetAppDirectoryPath(),  "inventory.json");
     }    
     
     public static string GetWithdrawlFilePath(Guid userId)
     {
-        return Path.Combine(("D:\\cwww\\todo\\JSONData"), "withdrawl.json");
+        return Path.Combine(GetAppDirectoryPath(), "withdrawl.json");
     }   
     
     public static string GetApprovedFilePath(Guid userId)
     {
-        return Path.Combine(("D:\\cwww\\todo\\JSONData"), "approved.json");
+        return Path.Combine(GetAppDirectoryPath(), "approved.json");
     }
 
 

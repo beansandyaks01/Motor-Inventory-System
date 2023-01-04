@@ -186,7 +186,7 @@
                 _editTodoErrorMessage = "";
                 if (_inventoryModel.Id == Guid.Empty)
                 {
-                    _inventoryItems = InventoryService.Create(_globalState.CurrentUser.Id,_globalState.CurrentUser.Username, _inventoryModel.ItemName, _inventoryModel.Quantity);
+                    throw new Exception("Cannot edit unaccounted item");
                 }
                 else
                 {
