@@ -12,12 +12,17 @@
         @foreach (var inventoryItem in _inventoryItems)
         {
             <tr>
-                <td>@inventoryItem.ItemName</td>
-                <td>@inventoryItem.Quantity.ToString()</td>
+                @if(inventoryItem.Quantity!=0)
+                {
+                    <td>@inventoryItem.ItemName</td>
+                    <td>@inventoryItem.Quantity.ToString()</td>
 
-                <button class="btn btn-outline-secondary" type="button" @onclick="()=>OpenWithdrawlInventoryDialog(inventoryItem)">
-                    <span class="oi oi-pencil" /> Withdraw
-                </button>
+                    <button class="btn btn-outline-secondary" type="button" @onclick="()=>OpenWithdrawlInventoryDialog(inventoryItem)">
+                        <span class="oi oi-pencil" /> Withdraw
+                    </button>
+                
+                }
+                
             </tr>
         }
     </tbody>
@@ -29,7 +34,7 @@
 @if (_showWithdrawlInventoryDialog)
 {
     <ModalDialog Title="@_dialogTitle" OnClose="@OnStaffInventoryDialogClose" OkLabel="@_dialogOkLabel">
-        <h1></h1>
+        <h1>Withdraw Items</h1>
         <div class="form-floating">
             <input id="itemName" type="text" class="form-control" @bind="_inventoryModel.ItemName" placeholder="Item Name" />
             <label for="itemName">Item Name</label>
