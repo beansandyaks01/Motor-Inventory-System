@@ -127,9 +127,13 @@ namespace Todo.Data
                 {
                     throw new Exception("Item not found.");
                 }
-                if (quantity <= 0)
+                else if (quantity <= 0)
                 {
                     throw new Exception("Quantity cannot be 0 or less");
+                }
+                if(quantity > itemUpdate.Quantity)
+                {
+                    throw new Exception("Withdraw quantity over the limit");
                 }
                 else
                 {

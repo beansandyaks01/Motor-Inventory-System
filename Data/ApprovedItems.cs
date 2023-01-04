@@ -24,6 +24,7 @@ namespace Todo.Data
         public Guid ApprovedBy { get; set; }
 
         public string ApproverName { get; set; }
+        public DateTime ApprovedDate { get; set; } = DateTime.Now;
 
 
     }
